@@ -20,16 +20,21 @@
                         <table class="min-w-full bg-white border border-gray-200">
                             <thead>
                                 <tr>
-                                    <th class="py-2 px-4 border-b">Judul</th>
-                                    <th class="py-2 px-4 border-b">Status</th>
-                                    <th class="py-2 px-4 border-b">Aksi</th>
+                                    <th class="py-2 px-4 border-b text-center">Judul</th>
+                                    <th class="py-2 px-4 border-b text-center">Penulis</th>
+                                    <th class="py-2 px-4 border-b text-center">Slug</th>
+                                    <th class="py-2 px-4 border-b text-center">Status</th>
+                                    <th class="py-2 px-4 border-b text-center">Tanggal Dibuat</th>
+                                    <th class="py-2 px-4 border-b text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($articles as $article)
                                 <tr>
-                                    <td class="py-2 px-4 border-b">{{ $article->title }}</td>
-                                    <td class="py-2 px-4 border-b">
+                                    <td class="py-2 px-4 border-b text-center">{{ $article->title }}</td>
+                                    <td class="py-2 px-4 border-b text-center">{{ $article->author }}</td>
+                                    <td class="py-2 px-4 border-b text-center">{{ $article->slug }}</td>
+                                    <td class="py-2 px-4 border-b text-center">
                                         <span class="px-2 py-1 text-xs font-semibold rounded-full 
                                             @if($article->status == 'diterima') bg-green-200 text-green-800
                                             @elseif($article->status == 'ditolak') bg-red-200 text-red-800
@@ -38,7 +43,8 @@
                                             {{ ucfirst($article->status) }}
                                         </span>
                                     </td>
-                                    <td class="py-2 px-4 border-b">
+                                    <td class="py-2 px-4 border-b text-center">{{ $article->created_at->format('d-m-Y H:i') }}</td>
+                                    <td class="py-2 px-4 border-b text-center">
                                         <a href="{{ route('articles.edit', $article) }}" class="text-blue-600 hover:text-blue-900 mr-2">Edit</a>
                                         <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-block">
                                             @csrf

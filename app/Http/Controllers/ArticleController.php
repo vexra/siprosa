@@ -47,6 +47,7 @@ class ArticleController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
+            'author' => 'required|max:255',
             'description' => 'required',
         ]);
         
@@ -55,7 +56,7 @@ class ArticleController extends Controller
         
         Article::create($validatedData);
 
-        return redirect()->route('dashboard')->with('success', 'Artikel berhasil ditambahkan!');
+        return redirect()->route('articles.index')->with('success', 'Artikel berhasil ditambahkan!');
     }
 
     /**
@@ -83,14 +84,15 @@ class ArticleController extends Controller
 
         $validatedData = $request->validate([
             'title' => 'required|max:255',
+            'author' => 'required|max:255',
             'description' => 'required',
         ]);
 
-        $validatedData['slug'] = Str::slug($request->title, '-');
+        $validatedData['slug'] = Str::slug($request->title, '-'); // Slug diperbarui otomatis dari judul baru
         
         $article->update($validatedData);
 
-        return redirect()->route('dashboard')->with('success', 'Artikel berhasil diupdate!');
+        return redirect()->route('articles.index')->with('success', 'Artikel berhasil diupdate!');
     }
 
     /**
@@ -105,6 +107,6 @@ class ArticleController extends Controller
         
         $article->delete();
 
-        return redirect()->route('dashboard')->with('success', 'Artikel berhasil dihapus!');
+        return redirect()->route('articles.index')->with('success', 'Artikel berhasil dihapus!');
     }
 }
