@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('author');
             $table->string('slug')->unique();
             $table->text('description');
             $table->enum('status', ['diterima', 'ditolak', 'diproses'])->default('diproses');
