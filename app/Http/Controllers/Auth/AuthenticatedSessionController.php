@@ -32,6 +32,18 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
+     * Handle the user redirect after successful authentication.
+     */
+    protected function authenticated(Request $request): RedirectResponse
+    {
+        if (auth()->user()->role === 'admin') {
+            return redirect()->intended('/admin/dashboard');
+        }
+
+        return redirect()->intended('/dashboard');
+    }
+
+    /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
