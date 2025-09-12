@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -8,9 +9,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->middleware('verified')->name('dashboard');
+    Route::get('/dashboard', [ArticleController::class, 'dashboard'])->middleware('verified')->name('dashboard');
+    
+    Route::get('/artikel-saya', [ArticleController::class, 'index'])->name('articles.index');
+    Route::resource('articles', ArticleController::class)->except(['show', 'index']);
 });
 
 
