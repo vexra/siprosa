@@ -19,13 +19,25 @@
             <div class="flex flex-grow">
                 <aside class="w-64 bg-white border-r border-gray-100 flex-shrink-0">
                     <div class="p-4 space-y-2">
-                        <a href="{{ route('dashboard') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('dashboard')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
-                            <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
-                        </a>
-                        <a href="{{ route('articles.index') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('articles.index')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
-                            <i class="fas fa-file-alt mr-3"></i> Artikel Saya
-                        </a>
-                        </div>
+                        @if(Auth::user()->role === 'admin')
+                            <a href="{{ route('admin.dashboard') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('admin.dashboard')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
+                                <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
+                            </a>
+                            <a href="{{ route('admin.articles.index') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('admin.articles.index')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
+                                <i class="fas fa-file-alt mr-3"></i> Daftar Artikel
+                            </a>
+                            <a href="{{ route('admin.users.index') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('admin.users.index')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
+                                <i class="fas fa-users-cog mr-3"></i> Kelola Akun
+                            </a>
+                        @else
+                            <a href="{{ route('dashboard') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('dashboard')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
+                                <i class="fas fa-tachometer-alt mr-3"></i> Dashboard
+                            </a>
+                            <a href="{{ route('articles.index') }}" class="flex items-center py-2 px-4 rounded-md @if(request()->routeIs('articles.index')) bg-gray-200 text-gray-800 @else text-gray-600 hover:bg-gray-100 @endif">
+                                <i class="fas fa-file-alt mr-3"></i> Artikel Saya
+                            </a>
+                        @endif
+                    </div>
                 </aside>
                 
                 <main class="flex-grow p-6">
