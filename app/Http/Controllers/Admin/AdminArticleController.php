@@ -34,10 +34,12 @@ class AdminArticleController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'slug' => 'required|string|unique:articles,slug,' . $article->id,
+            // Perbarui validasi untuk field 'url'
+            'url' => 'required|string|unique:articles,url,' . $article->id,
         ]);
 
-        $article->update($request->only('title', 'description', 'slug'));
+        // Perbarui artikel dengan data dari request, termasuk 'url'
+        $article->update($request->only('title', 'description', 'url'));
         return redirect()->route('admin.articles.index')->with('success', 'Artikel berhasil diperbarui.');
     }
 

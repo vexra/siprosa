@@ -49,10 +49,10 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'author' => 'required|max:255',
             'description' => 'required',
+            'url' => 'required|max:255|unique:articles,url',
         ]);
         
         $validatedData['user_id'] = auth()->id();
-        $validatedData['slug'] = Str::slug($request->title, '-');
         
         Article::create($validatedData);
 
@@ -86,9 +86,8 @@ class ArticleController extends Controller
             'title' => 'required|max:255',
             'author' => 'required|max:255',
             'description' => 'required',
+            'url' => 'required|max:255|unique:articles,url,' . $article->id,
         ]);
-
-        $validatedData['slug'] = Str::slug($request->title, '-'); // Slug diperbarui otomatis dari judul baru
         
         $article->update($validatedData);
 

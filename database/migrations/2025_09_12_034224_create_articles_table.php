@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('author');
-            $table->string('slug')->unique();
+            $table->string('url')->unique();
             $table->text('description');
             $table->enum('status', ['diterima', 'ditolak', 'diproses'])->default('diproses');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');

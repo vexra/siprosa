@@ -11,6 +11,7 @@
                                 <tr>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Judul</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">URL</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Penulis</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tanggal</th>
                                     <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
@@ -22,6 +23,7 @@
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $article->title }}</td>
+                                        <td class="px-6 py-4 break-all">{{ $article->url }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $article->user->name }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">{{ $article->created_at->format('d/m/Y') }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">

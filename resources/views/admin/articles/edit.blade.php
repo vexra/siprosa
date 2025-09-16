@@ -18,9 +18,9 @@
                         </div>
 
                         <div class="mt-4">
-                            <label for="slug" class="block font-medium text-sm text-gray-700">Slug</label>
-                            <input type="text" name="slug" id="slug" value="{{ old('slug', $article->slug) }}" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 bg-gray-100" readonly>
-                            @error('slug')
+                            <label for="url" class="block font-medium text-sm text-gray-700">URL</label>
+                            <input type="text" name="url" id="url" value="{{ old('url', $article->url) }}" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required>
+                            @error('url')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
@@ -43,18 +43,4 @@
             </div>
         </div>
     </div>
-    
-    @push('scripts')
-    <script>
-        const titleInput = document.getElementById('title');
-        const slugInput = document.getElementById('slug');
-
-        titleInput.addEventListener('input', function() {
-            const title = this.value;
-            // Menghilangkan karakter khusus dan menggantinya dengan tanda hubung (-)
-            const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-            slugInput.value = slug;
-        });
-    </script>
-    @endpush
 </x-app-layout>

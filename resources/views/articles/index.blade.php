@@ -22,7 +22,7 @@
                                 <tr>
                                     <th class="py-2 px-4 border-b text-center">Judul</th>
                                     <th class="py-2 px-4 border-b text-center">Penulis</th>
-                                    <th class="py-2 px-4 border-b text-center">Slug</th>
+                                    <th class="py-2 px-4 border-b text-center">URL</th>
                                     <th class="py-2 px-4 border-b text-center">Status</th>
                                     <th class="py-2 px-4 border-b text-center">Tanggal Dibuat</th>
                                     <th class="py-2 px-4 border-b text-center">Aksi</th>
@@ -33,7 +33,7 @@
                                 <tr>
                                     <td class="py-2 px-4 border-b text-center">{{ $article->title }}</td>
                                     <td class="py-2 px-4 border-b text-center">{{ $article->author }}</td>
-                                    <td class="py-2 px-4 border-b text-center">{{ $article->slug }}</td>
+                                    <td class="py-2 px-4 border-b text-center **break-all**">{{ $article->url }}</td>
                                     <td class="py-2 px-4 border-b text-center">
                                         <span class="px-2 py-1 text-xs font-semibold rounded-full 
                                             @if($article->status == 'diterima') bg-green-200 text-green-800
